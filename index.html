@@ -15,13 +15,13 @@
 	    <audio id="music" src="music.mp3" preload="auto"></audio>
         </a-assets>
            
-        <a-marker preset="hiro" id="hiromarker" soundhandler >
-                <a-box position='0 0.5 0' material='opacity: 0.2; color: white' > 
+        <a-marker preset="hiro" id="hiromarker" >
+                <a-box soundhandler position='0 0.5 0' material='opacity: 0.2; color: white' > 
                 </a-box>
         </a-marker>
            
-         <a-marker preset="kanji" id="kanjimarker" markerhandler>
-                <a-box position='0 0.5 0' material='opacity: 0.2; color: white' > 
+         <a-marker preset="kanji" id="kanjimarker">
+                <a-box markerhandler position='0 0.5 0' material='opacity: 0.2; color: white' > 
                 </a-box>
         </a-marker>
            
@@ -32,52 +32,19 @@
         
 <script>
 
-//To avoid playing from start if the marker flickers, not sure if needed, but it might be a failsafe when you have mutiple markers and want to make sure the first finishes before launching the second
-var playing = false;
-
-var intro = new Audio("audio.mp3");
-var intro = new Audio("music.mp3");
-	
-//Detect end of audio
-intro.addEventListener("ended", function() {
-	intro.currentTime = 0;
-	playing = false;
-});
+var intro = new Audio("#sound");
 
 AFRAME.registerComponent('soundhandler', {
-	init: function() {
-		// Set up the tick throttling. Will check if marker is active every 500ms
-		this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
-	},
-	tick: function(t, dt) {
-		
-		if (document.querySelector("#hiromarker").object3D.visible == true) {
-			// MARKER IS PRESENT
-			intro.play();
-			playing = true;
+tick: function() {
+		if (document.querySelector("#sound").object3D.visible == true) {
+			 entity.components.sound.playSound();
 		} else {
 			entity.components.sound.stopSound();
 		}
 
 	}
 });
-AFRAME.registerComponent('markerhandler', {
-	init: function() {
-		// Set up the tick throttling. Will check if marker is active every 500ms
-		this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
-	},
-	tick: function(t, dt) {
-		
-		if (document.querySelector("#kanjimarker").object3D.visible == true) {
-			// MARKER IS PRESENT
-			intro.play();
-			playing = true;
-		} else {
-			entity.components.sound.stopSound();
-		}
 
-	}
-});
         </script>
     </body>
 </html>
