@@ -52,12 +52,12 @@ AFRAME.registerComponent('soundhandler', {
 	},
 	tick: function(t, dt) {
 		
-		if (document.querySelector("#hiromarker").object3D.visible == true && playing == false) {
+		if (document.querySelector("#hiromarker").object3D.visible == true) {
 			// MARKER IS PRESENT
 			intro.play();
 			playing = true;
 		} else {
-			entity.components.sound.pauseSound();
+			playing == false;
 		}
 
 	}
@@ -69,12 +69,12 @@ AFRAME.registerComponent('markerhandler', {
 	},
 	tick: function(t, dt) {
 		
-		if (document.querySelector("#kanjimarker").object3D.visible == true && playing == false) {
+		if (document.querySelector("#kanjimarker").object3D.visible == true) {
 			// MARKER IS PRESENT
 			intro.play();
 			playing = true;
 		} else {
-			entity.components.sound.pauseSound();
+			playing == false;
 		}
 
 	}
