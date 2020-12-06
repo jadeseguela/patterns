@@ -12,7 +12,7 @@
        <a-assets>
             <audio id="sound" src="audio.mp3" preload="auto"></audio>
         </a-assets>
-        <a-marker id="hiro" preset="hiro">
+        <a-marker id="hiromarker" preset="hiro">
                 <a-box position='0 0.5 0' material='opacity: 0.2; color: black;' soundhandler> 
                 </a-box>
         </a-marker>
@@ -28,8 +28,8 @@
 <script>
 AFRAME.registerComponent('soundhandler', {
 tick: function () {
-           var entity = document.querySelector('[sound]');
-         if (document.querySelector('hiro').object3D.visible == true) {
+           var entity = document.querySelector("#sound");
+         if (document.querySelector('hiromarker').object3D.visible == true) {
             entity.components.sound.playSound();
         } else {
             entity.components.sound.pauseSound();
