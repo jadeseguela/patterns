@@ -44,9 +44,9 @@ AFRAME.registerComponent('musichandler', {
 tick: function () {
            var entity = document.querySelector('[music]');
          if (document.querySelector('a-marker').object3D.visible == true) {
-            entity.components.sound.playSound();
+            entity.components.music.playSound();
         } else {
-            entity.components.sound.pauseSound();
+            entity.components.music.pauseSound();
         }
 
      }
