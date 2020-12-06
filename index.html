@@ -30,9 +30,9 @@
 </a-scene>
         
 <script>
-AFRAME.registerComponent('soundhandler', {
+AFRAME.registerComponent('soundhandler','soundhandlersound' {
 tick: function () {
-           var entity = document.querySelector('[sound]');
+           var entity = document.querySelector('[sound]','[music]' );
          if (document.querySelector('a-marker').object3D.visible == true) {
             entity.components.sound.playSound();
         } else {
@@ -40,17 +40,7 @@ tick: function () {
         }
 
      }
-});
-AFRAME.registerComponent('soundhandlersound', {
-tick: function () {
-           var entity = document.querySelector('[music]');
-         if (document.querySelector('a-marker').object3D.visible == true) {
-            entity.components.sound.playSound();
-        } else {
-            entity.components.sound.pauseSound();
-        }
-
-     }
+}
 });
 </script>
     </body>
