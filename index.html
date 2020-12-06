@@ -35,10 +35,9 @@
 //To avoid playing from start if the marker flickers, not sure if needed, but it might be a failsafe when you have mutiple markers and want to make sure the first finishes before launching the second
 var playing = false;
 
-//HTML5 audio, will need user touch input to start on mobile
-var intro = new Audio("music.mp3");
 var intro = new Audio("audio.mp3");
-
+var intro = new Audio("music.mp3");
+	
 //Detect end of audio
 intro.addEventListener("ended", function() {
 	intro.currentTime = 0;
@@ -57,7 +56,7 @@ AFRAME.registerComponent('soundhandler', {
 			intro.play();
 			playing = true;
 		} else {
-			playing == false;
+			entity.components.sound.stopSound();
 		}
 
 	}
@@ -74,7 +73,7 @@ AFRAME.registerComponent('markerhandler', {
 			intro.play();
 			playing = true;
 		} else {
-			playing == false;
+			entity.components.sound.stopSound();
 		}
 
 	}
