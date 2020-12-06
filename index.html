@@ -15,7 +15,7 @@
         </a-assets>
            
         <a-marker preset="hiro">
-                <a-box position='0 0.5 0' material='color: black'; soundhandler> 
+                <a-box position='0 0.5 0' material='color: black';> 
                 </a-box>
         </a-marker>
         
@@ -30,18 +30,6 @@
 </a-scene>
         
 <script>
-AFRAME.registerComponent('soundhandler', {
-tick: function () {
-           var entity = document.querySelector('[sound]');
-         if (document.querySelector('a-marker').object3D.visible == true) {
-            entity.components.sound.playSound();
-        } else {
-            entity.components.sound.pauseSound();
-        }
-
-     }
-}
-});
 AFRAME.registerComponent('soundhandlersound', {
 tick: function () {
            var entity = document.querySelector('[music]');
