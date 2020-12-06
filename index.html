@@ -20,7 +20,7 @@
         </a-marker>
         
         <a-marker preset="kanji">
-                <a-box position='0 0.5 0' material='color: white'; soundhandler> 
+                <a-box position='0 0.5 0' material='color: white'; soundhandlersound> 
                 </a-box>
         </a-marker>
             
@@ -41,7 +41,7 @@ tick: function () {
 
      }
 });
-AFRAME.registerComponent('soundhandler', {
+AFRAME.registerComponent('soundhandlersound', {
 tick: function () {
            var entity = document.querySelector('[music]');
          if (document.querySelector('a-marker').object3D.visible == true) {
