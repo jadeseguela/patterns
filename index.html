@@ -27,9 +27,9 @@ AFRAME.registerComponent('soundhandler', {
 tick: function () {
            var entity = document.querySelector('[sound]');
          if (document.querySelector('a-marker').object3D.visible == true) {
-           sound.components.sound.playSound();
+           entity.components.sound.playSound();
         } else {
-           sound.components.sound.pauseSound();
+           entity.components.sound.pauseSound();
         }
 
      }
