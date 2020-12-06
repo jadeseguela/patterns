@@ -11,7 +11,8 @@
        <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
 
         <a-assets>
-            <audio id="sound" src="music.mp3" preload="auto"></audio>
+            <audio id="sound" src="audio.mp3" preload="auto"></audio>
+	<audio id="music" src="music.mp3" preload="auto"></audio>
         </a-assets>
            
         <a-marker preset="hiro" id="hiromarker" soundhandler >
@@ -19,12 +20,13 @@
                 </a-box>
         </a-marker>
            
-         <a-marker preset="kanji" id="kanjimarker" >
+         <a-marker preset="kanji" id="kanjimarker" markerhandler>
                 <a-box position='0 0.5 0' material='opacity: 0.2; color: white' > 
                 </a-box>
         </a-marker>
            
         <a-entity sound="src: #sound" autoplay="false"></a-entity>
+	<a-entity sound="src: #music" autoplay="false"></a-entity>
         <a-entity camera></a-entity>
 </a-scene>
         
@@ -35,6 +37,7 @@ var playing = false;
 
 //HTML5 audio, will need user touch input to start on mobile
 var intro = new Audio("music.mp3");
+	var intro = new Audio("audio.mp3");
 
 //Detect end of audio
 intro.addEventListener("ended", function() {
@@ -50,6 +53,23 @@ AFRAME.registerComponent('soundhandler', {
 	tick: function(t, dt) {
 		
 		if (document.querySelector("#hiromarker").object3D.visible == true && playing == false) {
+			// MARKER IS PRESENT
+			intro.play();
+			playing = true;
+		} else {
+			// MARKER IS HIDDEN, do nothing (up to you)
+		}
+
+	}
+});
+AFRAME.registerComponent('markerhandler', {
+	init: function() {
+		// Set up the tick throttling. Will check if marker is active every 500ms
+		this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
+	},
+	tick: function(t, dt) {
+		
+		if (document.querySelector("#kanjimarker").object3D.visible == true && playing == false) {
 			// MARKER IS PRESENT
 			intro.play();
 			playing = true;
