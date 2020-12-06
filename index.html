@@ -12,12 +12,12 @@
        <a-assets>
             <audio id="sound" src="audio.mp3" preload="auto"></audio>
         </a-assets>
-        <a-marker preset="hiro">
+        <a-marker id="hiro" preset="hiro">
                 <a-box position='0 0.5 0' material='opacity: 0.2; color: black;' soundhandler> 
                 </a-box>
         </a-marker>
           
-         <a-marker preset="kanji">
+         <a-marker id="kanji" preset="kanji">
                 <a-box position='0 0.5 0' material='opacity: 0.2; color: white'; soundhandler > 
                 </a-box>
         </a-marker>
@@ -29,7 +29,7 @@
 AFRAME.registerComponent('soundhandler', {
 tick: function () {
            var entity = document.querySelector('[sound]');
-         if (document.querySelector('a-marker').object3D.visible == true) {
+         if (document.querySelector('hiro').object3D.visible == true) {
             entity.components.sound.playSound();
         } else {
             entity.components.sound.pauseSound();
