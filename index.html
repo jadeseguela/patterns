@@ -11,6 +11,7 @@
        <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
        <a-assets>
             <audio id="sound" src="audio.mp3" preload="auto"></audio>
+            <audio id="music" src="music.mp3" preload="auto"></audio>
         </a-assets>
            
         <a-marker preset="hiro">
@@ -24,6 +25,7 @@
         </a-marker>
             
         <a-entity sound="src: #sound" autoplay="false"></a-entity>
+        <a-entity sound="src: #music" autoplay="false"></a-entity>
         <a-entity camera></a-entity>
 </a-scene>
         
@@ -31,6 +33,19 @@
 AFRAME.registerComponent('soundhandler', {
 tick: function () {
            var entity = document.querySelector('[sound]');
+         if (document.querySelector('a-marker').object3D.visible == true) {
+            entity.components.sound.playSound();
+        } else {
+            entity.components.sound.pauseSound();
+        }
+
+     }
+});
+</script>
+<script>
+AFRAME.registerComponent('soundhandler', {
+tick: function () {
+           var entity = document.querySelector('[music]');
          if (document.querySelector('a-marker').object3D.visible == true) {
             entity.components.sound.playSound();
         } else {
