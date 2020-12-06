@@ -32,11 +32,10 @@
         
 <script>
 
-var intro = new Audio("#sound");
-
 AFRAME.registerComponent('soundhandler', {
 tick: function() {
-		if (document.querySelector("#sound").object3D.visible == true) {
+	var entity = document.querySelector('[sound]');
+		if (document.querySelector("#hiromarker").object3D.visible == true) {
 			 entity.components.sound.playSound();
 		} else {
 			entity.components.sound.stopSound();
