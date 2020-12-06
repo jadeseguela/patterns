@@ -14,13 +14,13 @@
             <audio id="sound" src="music.mp3" preload="auto"></audio>
         </a-assets>
            
-        <a-marker preset="hiro">
-                <a-box position='0 0.5 0' material='color: black' > 
+        <a-marker preset="hiro" id="hiromarker" >
+                <a-box position='0 0.5 0' material='opacity: 0.2; color: white' > 
                 </a-box>
         </a-marker>
            
-         <a-marker preset="kanji" id="kanjimarker" >
-                <a-box position='0 0.5 0' material='opacity: 0.2; color: white'; soundhandler > 
+         <a-marker preset="kanji" id="kanjimarker" soundhandler >
+                <a-box position='0 0.5 0' material='opacity: 0.2; color: white' > 
                 </a-box>
         </a-marker>
            
