@@ -12,7 +12,7 @@
 
         <a-assets>
             <audio id="sound" src="audio.mp3" preload="auto"></audio>
-	<audio id="music" src="music.mp3" preload="auto"></audio>
+	    <audio id="music" src="music.mp3" preload="auto"></audio>
         </a-assets>
            
         <a-marker preset="hiro" id="hiromarker" soundhandler >
@@ -37,7 +37,7 @@ var playing = false;
 
 //HTML5 audio, will need user touch input to start on mobile
 var intro = new Audio("music.mp3");
-	var intro = new Audio("audio.mp3");
+var intro = new Audio("audio.mp3");
 
 //Detect end of audio
 intro.addEventListener("ended", function() {
@@ -57,7 +57,7 @@ AFRAME.registerComponent('soundhandler', {
 			intro.play();
 			playing = true;
 		} else {
-			// MARKER IS HIDDEN, do nothing (up to you)
+			entity.components.sound.pauseSound();
 		}
 
 	}
@@ -74,7 +74,7 @@ AFRAME.registerComponent('markerhandler', {
 			intro.play();
 			playing = true;
 		} else {
-			// MARKER IS HIDDEN, do nothing (up to you)
+			entity.components.sound.pauseSound();
 		}
 
 	}
