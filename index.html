@@ -18,7 +18,7 @@
                 </a-box>
         </a-marker>
           
-         <a-marker preset="kanji" id="kanjimarker" musichandler >
+         <a-marker preset="kanji" id="kanjimarker" >
                 <a-box position='0 0.5 0' material='opacity: 0.2; color: white' > 
                 </a-box>
         </a-marker>
@@ -30,7 +30,7 @@
 <script>
 AFRAME.registerComponent('soundhandler', {
 tick: function () {
-           var entity = document.querySelector('[sound]');
+           var entity = document.querySelector('[music]');
          if (document.querySelector('a-marker').object3D.visible == true) {
             entity.components.sound.playSound();
         } else {
@@ -40,17 +40,6 @@ tick: function () {
      }
 });
 
-AFRAME.registerComponent('musichandler', {
-tick: function () {
-           var entity = document.querySelector('[music]');
-         if (document.querySelector('a-marker').object3D.visible == true) {
-            entity.components.music.playSound();
-        } else {
-            entity.components.music.pauseSound();
-        }
-
-     }
-});
 </script>
     </body>
 </html>
