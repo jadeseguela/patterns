@@ -14,24 +14,24 @@
 	    <audio id="sound 2" src="music.mp3" preload="auto"></audio>
         </a-assets>
 	       
-        <a-marker preset="kanji">
+        <a-marker preset="kanji" id="kanji">
                 <a-box position='0 0 0' material='opacity: 0.5, color: white'; soundhandler> 
                 </a-box>
         </a-marker>
 	       
-	<a-marker preset="hiro">
+	<a-marker preset="hiro" id="hiro">
                 <a-box position='0 0.5 0' material='opacity: 0.5, color: black'; soundhandler> 
                 </a-box>
         </a-marker>
 	       
-        <a-entity sound="src: #sound 1" autoplay="false"></a-entity>
-	<a-entity sound="src: #sound 2" autoplay="false"></a-entity>
+        <a-entity sound="src: #sound1" autoplay="false"></a-entity>
+	<a-entity sound="src: #sound2" autoplay="false"></a-entity>
         <a-entity camera></a-entity>
 </a-scene>
         
 <script>
-var entity1 = document.querySelector ('[sound 1]');
-var entity2 = document.querySelector ('[sound 2]');
+var entity1 = document.querySelector ('[#sound1]');
+var entity2 = document.querySelector ('[#sound2]');
 
 var marker1 = document.querySelector ('kanji');
 var marker2 = document.querySelector ('hiro');
