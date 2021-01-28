@@ -10,7 +10,8 @@
     <body style='margin : 0px; overflow: hidden;'>
        <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
        <a-assets>
-            <audio id="sound" src="audio.mp3" preload="auto"></audio>
+            <audio id="sound 1" src="audio.mp3" preload="auto"></audio>
+	    <audio id="sound 2" src="music.mp3" preload="auto"></audio>
         </a-assets>
 	       
         <a-marker preset="kanji">
@@ -18,20 +19,33 @@
                 </a-box>
         </a-marker>
 	       
-        <a-entity sound="src: #sound" autoplay="false"></a-entity>
+	<a-marker preset="hiro">
+                <a-box position='0 0.5 0' material='opacity: 0.5, color: white'; soundhandler> 
+                </a-box>
+        </a-marker>
+	       
+        <a-entity sound="src: #sound 1" autoplay="false"></a-entity>
+	<a-entity sound="src: #sound 2" autoplay="false"></a-entity>
         <a-entity camera></a-entity>
 </a-scene>
         
 <script>
-AFRAME.registerComponent('soundhandler', {
-tick: function () {
-           var entity = document.querySelector('[sound]');
-         if (document.querySelector('a-marker').object3D.visible == true) {
-           entity.components.sound.playSound();
-        } else {
-           entity.components.sound.pauseSound();
-        }
+var entity1 = document.querySelector ('[sound 1]');
+var entity2 = document.querySelector ('[sound 2]');
 
+var marker1 = document.querySelector ('kanji');
+var marker2 = document.querySelector ('hiro');
+	
+AFRAME.registerComponent('soundhandler', {
+function () {
+         if (marker1.object3D.visible == true) {
+           entity1.components.sound.playSound();
+        } else if (marker2.object3D.visible ==true) {
+           entity2.components.sound.playSound();
+        } else {
+		entity1.components.sound.pauseSound();
+		entity2.components.sound.pauseSound();
+		 }
      }
 });
 </script>
