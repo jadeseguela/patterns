@@ -10,17 +10,12 @@
     <body style='margin : 0px; overflow: hidden;'>
        <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
        <a-assets>
-            <audio id="sound 1" src="audio.mp3" preload="auto"></audio>
-	    <audio id="sound 2" src="music.mp3" preload="auto"></audio>
+            <audio id="sound1" src="audio.mp3" preload="auto"></audio>
+	    <audio id="sound2" src="music.mp3" preload="auto"></audio>
         </a-assets>
 	       
         <a-marker preset="kanji" id="kanji">
-                <a-box position='0 0 0' material='opacity: 0.5, color: white'; soundhandler> 
-                </a-box>
-        </a-marker>
-	       
-	<a-marker preset="hiro" id="hiro">
-                <a-box position='0 0.5 0' material='opacity: 0.5, color: black'; soundhandler> 
+                <a-box position='0 0.5 0' material='opacity: 0.8, color: white'; soundhandler> 
                 </a-box>
         </a-marker>
 	       
@@ -30,8 +25,8 @@
 </a-scene>
         
 <script>
-var entity1 = document.querySelector ('[#sound1]');
-var entity2 = document.querySelector ('[#sound2]');
+var entity1 = document.querySelector ('[sound1]');
+var entity2 = document.querySelector ('[sound2]');
 
 var marker1 = document.querySelector ('kanji');
 var marker2 = document.querySelector ('hiro');
